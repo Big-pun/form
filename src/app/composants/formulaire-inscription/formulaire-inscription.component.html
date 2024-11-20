@@ -1,45 +1,25 @@
-
-<form>
+<form #formulaireInscription="ngForm">
   <mat-form-field appearance="fill">
     <mat-label>Nom</mat-label>
-    <input
-      matInput
-      type="text"
-      name="nom"
-      placeholder="Nom"
-      #nom="ngModel"
-      [(ngModel)]="personne.nom"
-    />
+    <input matInput type="text" name="nom" placeholder="Nom" #nom="ngModel" [(ngModel)]="personne.nom" required
+      minlength="2" maxlength="20" />
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Prénom</mat-label>
-    <input
-      matInput
-      type="text"
-      name="prenom"
-      placeholder="Prénom"
-      #prenom="ngModel"
-      [(ngModel)]="personne.prenom"
-    />
+    <input matInput type="text" name="prenom" placeholder="Prénom" #prenom="ngModel" [(ngModel)]="personne.prenom"
+      required />
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Courriel</mat-label>
-    <input
-      matInput
-      type="email"
-      name="courriel"
-      placeholder="Courriel"
-      type="email"
-      #courriel="ngModel"
-      [(ngModel)]="personne.courriel"
-    />
+    <input matInput type="email" name="courriel" placeholder="Courriel" type="email" #courriel="ngModel"
+      [(ngModel)]="personne.courriel" required />
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Sexe</mat-label>
-    <mat-select name="sexe" #sexe="ngModel" [(ngModel)]="personne.sexe">
+    <mat-select name="sexe" #sexe="ngModel" [(ngModel)]="personne.sexe" required>
       <mat-option value="homme">Homme</mat-option>
       <mat-option value="femme">Femme</mat-option>
       <mat-option value="autre">Autre</mat-option>
@@ -48,13 +28,8 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Date de naissance</mat-label>
-    <input
-      matInput
-      [matDatepicker]="picker"
-      name="dateNaissance"
-      #dateNaissance="ngModel"
-      [(ngModel)]="personne.dateNaissance"
-    />
+    <input matInput [matDatepicker]="picker" name="dateNaissance" #dateNaissance="ngModel"
+      [(ngModel)]="personne.dateNaissance" />
     <mat-hint>MM/DD/YYYY</mat-hint>
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
@@ -62,16 +37,46 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Nombre d’enfants</mat-label>
-    <input
-      matInput
-      name="nombreEnfants"
-      placeholder="Nombre d’enfants"
-      type="number"
-      min="0"
-      #nombreEnfants="ngModel"
-      [(ngModel)]="personne.nbEnfants"
-    />
+    <input matInput name="nombreEnfants" placeholder="Nombre d’enfants" type="number" min="0" #nombreEnfants="ngModel"
+      [(ngModel)]="personne.nbEnfants" />
   </mat-form-field>
 
-  <button mat-raised-button color="primary" type="submit">Soumettre</button>
+  <div class="errors">
+
+    @if (nom.invalid && nom.errors?.['required'] && nom.dirty) {
+    <p>Le nom est requis</p>
+    } @else if (nom.invalid && nom.errors?.['minlength'] && nom.dirty) {
+    <p>Le nom doit contenir au moins 2 caractères</p>
+    } @else if (nom.invalid && nom.errors?.['maxlength'] && nom.dirty) {
+    <p>Le nom doit contenir au plus 20 caractères</p>
+    }
+
+    @if (prenom.invalid && prenom.errors?.['required'] && prenom.dirty) { 
+    <p>Le prénom est requis</p>
+    }
+
+    @if (courriel.invalid && courriel.errors?.['required'] && courriel.dirty) {
+    <p>Le courriel est requis</p>
+    } @else if (courriel.invalid && courriel.errors?.['email'] && courriel.dirty) {
+    <p>Le courriel doit être valide</p>
+    }
+
+    @if (sexe.invalid && sexe.errors?.['required'] && sexe.dirty) {
+    <p>Le sexe est requis</p>
+    }
+
+    @if (dateNaissance.invalid && dateNaissance.errors?.['required'] && dateNaissance.dirty) {
+    <p>La date de naissance est requise</p>
+    } @else if (dateNaissance.invalid && dateNaissance.dirty) {
+    <p>La date de naissance doit être valide</p>
+    }
+
+    @if (nombreEnfants.invalid && nombreEnfants.errors?.['required'] && nombreEnfants.dirty) {
+    <p>Le nombre d’enfants est requis</p>
+    } @else if (nombreEnfants.invalid && nombreEnfants.errors?.['min'] && nombreEnfants.dirty) {
+      <p>Le nombre d’enfants doit être 0 ou plus</p>
+    }
+  </div>
+
+  <button [disabled]="formulaireInscription.invalid" mat-raised-button color="primary" type="submit" (click)="onSubmit()" >Soumettre</button>
 </form>

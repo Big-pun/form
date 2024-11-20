@@ -32,6 +32,11 @@ export class FormulaireInscriptionComponent {
   sexe: "",
   dateNaissance: new Date(),
   nbEnfants: 0,
-    
   };
+
+  readonly dateDuJour = new Date();
+
+  onSubmit() {
+    console.log(this.personne);
+  }
 }
