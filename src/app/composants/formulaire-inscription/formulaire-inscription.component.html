@@ -1,0 +1,42 @@
+<p>formulaire-inscription works!</p>
+
+
+  <form>
+    <mat-form-field appearance="fill">
+      <mat-label>Nom</mat-label>
+      <input matInput name="nom" placeholder="Nom"/>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Prénom</mat-label>
+      <input matInput name="prenom" placeholder="Prénom" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Courriel</mat-label>
+      <input matInput name="courriel" placeholder="Courriel" type="email" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Sexe</mat-label>
+      <mat-select name="sexe" required>
+        <mat-option value="homme">Homme</mat-option>
+        <mat-option value="femme">Femme</mat-option>
+        <mat-option value="autre">Autre</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Date de naissance</mat-label>
+      <input matInput name="dateNaissance" placeholder="Date de naissance" required>
+      <mat-datepicker-toggle ></mat-datepicker-toggle>
+      <mat-datepicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre d’enfants</mat-label>
+      <input matInput name="nombreEnfants" placeholder="Nombre d’enfants" type="number" min="0" required>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Soumettre</button>
+  </form>

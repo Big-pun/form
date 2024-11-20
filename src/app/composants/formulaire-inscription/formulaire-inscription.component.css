@@ -1,0 +1,22 @@
+:host {
+  display: block;
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 1em;
+}
+
+mat-card {
+  padding: 2em;
+  margin-top: 1em;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+button {
+  display: block;
+  width: 100%;
+  margin-top: 1em;
+}
