@@ -11,6 +11,5 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './formulaire-humeur.component.css'
 })
 export class FormulaireHumeurComponent {
-  
-
+  indiceHumeur = 0;
 }

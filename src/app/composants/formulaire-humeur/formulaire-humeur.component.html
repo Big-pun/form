@@ -1,5 +1,5 @@
-<p>formulaire-humeur works!</p>
-
-<mat-slider>
-    <input matSliderThumb>
+<mat-slider min="0" max="100" step="1">
+    <input matSliderThumb [(ngModel)]="indiceHumeur"/>
 </mat-slider>
+
+{{indiceHumeur}}
