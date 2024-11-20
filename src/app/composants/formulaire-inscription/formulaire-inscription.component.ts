@@ -6,11 +6,13 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-formulaire-inscription',
   standalone: true,
   imports: [
+    FormsModule,
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
@@ -22,4 +24,14 @@ import { ReactiveFormsModule } from '@angular/forms';
   templateUrl: './formulaire-inscription.component.html',
   styleUrl: './formulaire-inscription.component.css',
 })
-export class FormulaireInscriptionComponent {}
+export class FormulaireInscriptionComponent {
+  personne = {
+  nom: "",
+  prenom: "",
+  courriel: "",
+  sexe: "",
+  dateNaissance: new Date(),
+  nbEnfants: 0,
+    
+  };
+}

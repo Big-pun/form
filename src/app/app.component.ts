@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FormulaireInscriptionComponent } from "./composants/formulaire-inscription/formulaire-inscription.component";
+import { FormulaireHumeurComponent } from "./composants/formulaire-humeur/formulaire-humeur.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FormulaireInscriptionComponent],
+  imports: [RouterOutlet, FormulaireInscriptionComponent, FormulaireHumeurComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
